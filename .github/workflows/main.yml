@@ -12,6 +12,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact.zip
+          path: /*
           retention-days: 5
       - name: default deploy
         uses: appleboy/lambda-action@master
