@@ -16,13 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Use Node.js ${{ matrix.node-version }}
-      run: |
-        gh repo clone nikhils09ece/cptest
-    - name: zip
-      uses: montudor/action-zip@v0.1.0
-      with:
-        args: zip -qq -r ./bundle.zip ./
+      - name: Use Node.js 
+        run: |
+          gh repo clone nikhils09ece/cptest
+      - name: zip
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./bundle.zip ./
          
       
       - name: default deploy
