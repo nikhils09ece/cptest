@@ -1,20 +1,25 @@
---- 
-jobs: 
-  runs-on: ubuntu-latest
-  steps: 
-    - 
-      name: "default deploy"
-      uses: appleboy/lambda-action@master
-      with: 
-        aws_access_key_id: "${{ secrets.AWS_ACCESS_KEY_ID }}"
-        aws_region: me-south-1
-        aws_secret_access_key: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-        function_name: CP-test
+# This is a basic workflow to help you get started with Actions
+
 name: CI
-true: 
-  pull_request: 
-    branches: 
-      - main
-  push: 
-    branches: 
-      - main
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: default deploy
+        uses: appleboy/lambda-action@master
+        with:
+            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws_region: me-south-1
+            function_name: CP-test
+
