@@ -19,7 +19,9 @@ jobs:
       - name: Use Node.js 
         run: |
           git clone https://github.com/nikhils09ece/cptest.git
-          zip -qq -r ./bundle.zip ./
+          ls
+          pwd
+          zip -r bundle.zip ./
           
       - name: zip
         uses: montudor/action-zip@v0.1.0
