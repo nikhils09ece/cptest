@@ -8,12 +8,10 @@ jobs:
         node-version: [12.x]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
+      - name: zip
+        uses: montudor/action-zip@v0.1.0
         with:
-          name: my-artifact.zip
-          path: /*
-          retention-days: 5
+          args: zip -qq -r ./bundle.zip ./
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
@@ -21,4 +19,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: me-south-1
           function_name: CP-test
-          zip_file: my-artifact.zip
+          zip_file: bundle.zip
